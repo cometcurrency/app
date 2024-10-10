@@ -1,113 +1,144 @@
-import 'package:cometdev/categories.dart';
-import 'package:cometdev/categories/fashion.dart';
-import 'package:cometdev/categories/fashionrev.dart';
-import 'package:cometdev/categories/food.dart';
-import 'package:cometdev/categories/foodrev.dart';
-import 'package:cometdev/categories/haircare.dart';
-import 'package:cometdev/categories/haircarerev.dart';
-import 'package:cometdev/categories/skincare.dart';
-import 'package:cometdev/clippednav.dart';
-import 'package:cometdev/homeone.dart';
-import 'package:cometdev/intro/form.dart';
-import 'package:cometdev/intro/formrev.dart';
-import 'package:cometdev/intro/formx.dart';
-import 'package:cometdev/intro/phonerev.dart';
-import 'package:cometdev/intro/verifyrev.dart';
-import 'package:cometdev/mainwithnav.dart';
-import 'package:cometdev/nearby/location.dart';
-// import 'package:cometdev/newmain.dart';
-import 'package:cometdev/profile/personal.dart';
-import 'package:cometdev/profile/personal1.dart';
-import 'package:cometdev/profile/personal2.dart';
-import 'package:cometdev/profile/personalrev.dart';
-import 'package:cometdev/profile/profile.dart';
-import 'package:cometdev/profile/profilerev.dart';
-import 'package:cometdev/test.dart';
 import 'package:flutter/material.dart';
-import 'package:cometdev/intro/phone.dart';
-import 'package:cometdev/intro/verify.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:responsive_framework/responsive_framework.dart';
+import 'package:maincomet/homewithcurve.dart';
+import 'package:maincomet/intro/form.dart';
+import 'package:maincomet/intro/home.dart';
+import 'package:maincomet/intro/phone.dart';
+import 'package:maincomet/pages/categories/Fashion.dart';
+import 'package:maincomet/pages/categories/deposit.dart';
+import 'package:maincomet/pages/categories/food.dart';
+import 'package:maincomet/pages/categories/haircare.dart';
+import 'package:maincomet/pages/categories/skincare.dart';
+import 'package:maincomet/pages/one.dart';
+import 'package:maincomet/pages/three.dart';
+import 'package:maincomet/pages/withdraw.dart';
+import 'package:maincomet/profile/appsettings.dart';
+import 'package:maincomet/profile/cardsettings.dart';
+import 'package:maincomet/profile/personal2imp.dart';
+import 'package:maincomet/profile/personalimp.dart';
+import 'package:maincomet/profile/profile.dart';
+import 'package:molten_navigationbar_flutter/molten_navigationbar_flutter.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 
-// void main() {
-//  WidgetsFlutterBinding.ensureInitialized();
-// runApp(MaterialApp(
-// theme: ThemeData(
-// textTheme: GoogleFonts.nunitoSansTextTheme(
-//
-// )
-// ),
-// initialRoute: 'mainclip',
-// debugShowCheckedModeBanner: false,
-// routes: {
-// 'phone': (context) => PhoneScreen(),
-// 'verify': (context) => OtpScr(),
-// 'mainone': (context)=> MainScreen(),
-// 'profile': (context)=> Profile(),
-// 'form': (context) => FormScreen(),
-// 'formx': (context) => Formx(),
-// 'personal': (context) => Personal(),
-// 'personal1': (context) => PersonalOne(),
-// 'mainclip': (context) => MyHomePage(),
-// 'fashion': (context) => Fashion(),
-// 'categories': (context) => catpage(),
-// 'haircare': (context) => Haircare(),
-// 'skincare': (context) => Skincare(),
-// 'food': (context) => Food(),
-//
-// },
-// ));
-// }
-//
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(textTheme: GoogleFonts.nunitoSansTextTheme()),
-      builder: (context, child) => ResponsiveBreakpoints.builder(
-        child: child!,
-        breakpoints: [
-          const Breakpoint(start: 0, end: 450, name: MOBILE),
-          const Breakpoint(start: 451, end: 800, name: TABLET),
-          const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-          const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
-        ],
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          // This is the theme of your application.
+          //
+          // TRY THIS: Try running your application with "flutter run". You'll see
+          // the application has a purple toolbar. Then, without quitting the app,
+          // try changing the seedColor in the colorScheme below to Colors.green
+          // and then invoke "hot reload" (save your changes or press the "hot
+          // reload" button in a Flutter-supported IDE, or press "r" if you used
+          // the command line to start the app).
+          //
+          // Notice that the counter didn't reset back to zero; the application
+          // state is not lost during the reload. To reset the state, use hot
+          // restart instead.
+          //
+          // This works for code too, not just values: Most code changes can be
+          // tested with just a hot reload.
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: PhoneRev());
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
+
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
       ),
-      initialRoute: "phone",
-      debugShowCheckedModeBanner: false,
-      routes: {
-        'phone': (context) => PhoneScreen(),
-        'phonerev': (context) => PhoneRev(),
-        // 'test': (context) => Test(),
-        'verifyrev': (context) => OtpScrRev('7032880020'),
-        // 'mainone': (context)=> MainScreen(),
-        'profile': (context) => Profile(),
-        'profilerev': (context) => Profilerev(),
-        'formrev': (context) => FormRevScreen(),
-        'form': (context) => FormScreen(),
-        // 'formx': (context) => Formx(),
-        'personal2': (context) => Personal2(),
-        'personal2rev': (context) => Personal2rev(),
-        'personal1': (context) => PersonalOne(),
-        'mainclip': (context) => MyHomePage(),
-        'fashion': (context) => Fashion(),
-        'fashionrev': (context) => Fashionrev(),
-        'categories': (context) => catpage(),
-        'haircare': (context) => Haircare(),
-        'haircarerev': (context) => Haircarerev(),
-        'skincare': (context) => Skincare(),
-        'skincarerev': (context) => Skincare(),
-        'food': (context) => Food(),
-        'foodrev': (context) => Foodrev(),
-        'location': (context) => LocationPage(),
-      },
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          //
+          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+          // action in the IDE, or press "p" in the console), to see the
+          // wireframe for each widget.
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

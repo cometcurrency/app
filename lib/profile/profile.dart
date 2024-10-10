@@ -1,20 +1,22 @@
-import 'package:cometdev/controller/detailscontroller.dart';
-import 'package:cometdev/profile/personal.dart';
-import 'package:cometdev/profile/personal2.dart';
+import 'package:maincomet/controller.dart';
+import 'package:maincomet/profile/appsettings.dart';
+import 'package:maincomet/profile/cardsettings.dart';
+// import 'package:newproject/profile/personal.dart';
+import 'package:maincomet/profile/personal2imp.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class Profilerev extends StatefulWidget {
+  const Profilerev({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Profilerev> createState() => _ProfilerevState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfilerevState extends State<Profilerev> {
   @override
   String avatar = "assets/hs/avatar.png";
   String name = 'Vedanth';
@@ -42,7 +44,7 @@ class _ProfileState extends State<Profile> {
                 child: ListView(
                   children: <Widget>[
                     SizedBox(
-                      height: height * 0.04,
+                      height: 10,
                     ),
                     Material(
                       elevation: 5,
@@ -52,7 +54,7 @@ class _ProfileState extends State<Profile> {
                           Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20)),
-                            height: height * 0.3,
+                            height: 200,
                             child: Row(
                               children: <Widget>[
                                 Padding(
@@ -60,8 +62,8 @@ class _ProfileState extends State<Profile> {
                                   child: Stack(
                                     children: [
                                       Container(
-                                        height: height * 0.2,
-                                        width: width * 0.3,
+                                        height: 150,
+                                        width: 150,
                                         decoration: BoxDecoration(
                                             color: HexColor("FADEFF"),
                                             borderRadius:
@@ -70,13 +72,13 @@ class _ProfileState extends State<Profile> {
                                                 color: Colors.black, width: 2)),
                                         child: Image.asset(
                                           contr.avatar.value,
-                                          height: height * 0.2,
+                                          height: 100,
                                           width: 200,
                                         ),
                                       ),
                                       Positioned(
-                                          top: height * 0.01,
-                                          left: width * 0.23,
+                                          top: 10,
+                                          left: 125,
                                           child: Icon(
                                             Icons.edit_sharp,
                                             size: 18,
@@ -85,14 +87,14 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                                 //details
-                                SizedBox(width: width * 0.05),
+                                SizedBox(width: 20),
                                 Flexible(
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       SizedBox(
-                                        height: height * 0.08,
+                                        height: 50,
                                       ),
                                       Flexible(
                                         child: Row(
@@ -122,7 +124,7 @@ class _ProfileState extends State<Profile> {
                                         ),
                                       ),
                                       SizedBox(
-                                        height: height * 0.02,
+                                        height: 10,
                                       ),
                                       Row(
                                         children: [
@@ -153,7 +155,7 @@ class _ProfileState extends State<Profile> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: height * 0.02,
+                                        height: 10,
                                       ),
                                       Row(
                                         children: [
@@ -195,14 +197,14 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                           Positioned(
-                              top: height * 0.01,
-                              left: width * 0.8,
+                              top: 10,
+                              left: 350,
                               child: InkWell(
                                 onTap: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Personal2()),
+                                        builder: (context) => PD()),
                                   );
                                 },
                                 child: Icon(Icons.edit),
@@ -211,116 +213,222 @@ class _ProfileState extends State<Profile> {
                       ),
                     ),
                     //rest of the fields
-                    SizedBox(
-                      height: height * 0.05,
-                    ),
-                    InkWell(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/profile/settings.png",
-                            height: height * 0.05,
+                    SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Appsettings()),
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.0, top: 10),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 3,
+                          child: Container(
+                            height: cts.maxHeight * 0.06,
+                            width: cts.maxWidth * 0.9,
+                            decoration: BoxDecoration(
+                                color: HexColor("FFFFFF"),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 20.0, top: 5),
+                              child: Text("App settings",
+                                  style: GoogleFonts.nunitoSans(fontSize: 24)),
+                            ),
                           ),
-                          SizedBox(
-                            width: width * 0.06,
-                          ),
-                          Text(
-                            "App settings",
-                            style: GoogleFonts.nunitoSans(
-                                color: HexColor("390042"), fontSize: 24),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.03,
+                      height: 30,
                     ),
-                    Divider(
-                      color: HexColor("EDB2F7"),
-                      thickness: 3,
-                    ),
-                    InkWell(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/profile/card.png",
-                            height: height * 0.05,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Cardsettings()),
+                        );
+                      },
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.0, top: 10),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 3,
+                          child: Container(
+                            height: cts.maxHeight * 0.06,
+                            width: cts.maxWidth * 0.9,
+                            decoration: BoxDecoration(
+                                color: HexColor("FFFFFF"),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 20.0, top: 5),
+                              child: Text("Card settings",
+                                  style: GoogleFonts.nunitoSans(fontSize: 24)),
+                            ),
                           ),
-                          SizedBox(
-                            width: width * 0.05,
-                          ),
-                          Text(
-                            "Card settings",
-                            style: GoogleFonts.nunitoSans(
-                                color: HexColor("390042"), fontSize: 24),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.02,
+                      height: 30,
                     ),
-                    Divider(
-                      color: HexColor("EDB2F7"),
-                      thickness: 3,
-                    ),
-                    InkWell(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/profile/info.png",
-                            height: height * 0.05,
+                    GestureDetector(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.0, top: 10),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 3,
+                          child: Container(
+                            height: cts.maxHeight * 0.06,
+                            width: cts.maxWidth * 0.9,
+                            decoration: BoxDecoration(
+                                color: HexColor("FFFFFF"),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 20.0, top: 5),
+                              child: Text("About",
+                                  style: GoogleFonts.nunitoSans(fontSize: 24)),
+                            ),
                           ),
-                          SizedBox(
-                            width: width * 0.05,
-                          ),
-                          Text(
-                            "About",
-                            style: GoogleFonts.nunitoSans(
-                                color: HexColor("390042"), fontSize: 24),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: height * 0.02,
+                      height: 30,
                     ),
-                    Divider(
-                      color: HexColor("EDB2F7"),
-                      thickness: 3,
-                    ),
-                    InkWell(
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          Image.asset(
-                            "assets/profile/call.png",
-                            height: height * 0.05,
+                    GestureDetector(
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 10.0, top: 10),
+                        child: Material(
+                          borderRadius: BorderRadius.circular(20),
+                          elevation: 3,
+                          child: Container(
+                            height: cts.maxHeight * 0.06,
+                            width: cts.maxWidth * 0.9,
+                            decoration: BoxDecoration(
+                                color: HexColor("FFFFFF"),
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Padding(
+                              padding: EdgeInsets.only(left: 20.0, top: 5),
+                              child: Text("Contact Us",
+                                  style: GoogleFonts.nunitoSans(fontSize: 24)),
+                            ),
                           ),
-                          SizedBox(
-                            width: width * 0.04,
-                          ),
-                          Text(
-                            "Contact Us",
-                            style: GoogleFonts.nunitoSans(fontSize: 24),
-                          )
-                        ],
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: height * 0.02,
-                    ),
-                    Divider(
-                      color: HexColor("EDB2F7"),
-                      thickness: 3,
-                    )
+
+                    // InkWell(
+                    // child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // children: <Widget>[
+                    // Image.asset(
+                    // "assets/profile/settings.png",
+                    // height: 50,
+                    // ),
+                    // SizedBox(
+                    // width: 20,
+                    // ),
+                    // Text(
+                    // "App settings",
+                    // style: GoogleFonts.nunitoSans(
+                    // color: HexColor("390042"), fontSize: 24),
+                    // )
+                    // ],
+                    // ),
+                    // ),
+                    // SizedBox(
+                    // height: 20,
+                    // ),
+                    // Divider(
+                    // color: HexColor("EDB2F7"),
+                    // thickness: 3,
+                    // ),
+                    // InkWell(
+                    // child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // children: <Widget>[
+                    // Image.asset(
+                    // "assets/profile/card.png",
+                    // height: 50,
+                    // ),
+                    // SizedBox(
+                    // width: 20,
+                    // ),
+                    // Text(
+                    // "Card settings",
+                    // style: GoogleFonts.nunitoSans(
+                    // color: HexColor("390042"), fontSize: 24),
+                    // )
+                    // ],
+                    // ),
+                    // ),
+                    // SizedBox(
+                    // height: 20,
+                    // ),
+                    // Divider(
+                    // color: HexColor("EDB2F7"),
+                    // thickness: 3,
+                    // ),
+                    // InkWell(
+                    // child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // children: <Widget>[
+                    // Image.asset(
+                    // "assets/profile/info.png",
+                    // height: 50,
+                    // ),
+                    // SizedBox(
+                    // width: 20,
+                    // ),
+                    // Text(
+                    // "About",
+                    // style: GoogleFonts.nunitoSans(
+                    // color: HexColor("390042"), fontSize: 24),
+                    // )
+                    // ],
+                    // ),
+                    // ),
+                    // SizedBox(
+                    // height: 20,
+                    // ),
+                    // Divider(
+                    // color: HexColor("EDB2F7"),
+                    // thickness: 3,
+                    // ),
+                    // InkWell(
+                    // child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // children: <Widget>[
+                    // Image.asset(
+                    // "assets/profile/call.png",
+                    // height: 50,
+                    // ),
+                    // SizedBox(
+                    // width: 20,
+                    // ),
+                    // Text(
+                    // "Contact Us",
+                    // style: GoogleFonts.nunitoSans(fontSize: 24),
+                    // )
+                    // ],
+                    // ),
+                    // ),
+                    // SizedBox(
+                    // height: 20,
+                    // ),
+                    // Divider(
+                    // color: HexColor("EDB2F7"),
+                    // thickness: 3,
+                    // )
                   ],
                 ));
           }),

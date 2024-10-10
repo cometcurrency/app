@@ -1,5 +1,5 @@
-import Flutter
 import UIKit
+import Flutter
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -8,7 +8,6 @@ import UIKit
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
     GeneratedPluginRegistrant.register(with: self)
-    [GMSServices provideAPIKey:@"AIzaSyC1XSJEKAGFiPDb7_M26roxCmFc9jzBrXw"];
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }

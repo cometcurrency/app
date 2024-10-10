@@ -1,6 +1,6 @@
 {
-    "name": "cometdev",
-    "short_name": "cometdev",
+    "name": "maincomet",
+    "short_name": "maincomet",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
